@@ -10,7 +10,9 @@ async function getProjects() {
   return projects;
 }
 
-async function createProject(project) {}
+async function createProject(project) {
+  
+}
 
 module.exports = {
   getProjects,
