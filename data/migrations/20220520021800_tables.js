@@ -3,7 +3,7 @@ exports.up = async function (knex) {
       table.increments("project_id");
       table.string("project_name", 128).notNullable();
       table.string("project_description", 128);
-      table.bool("project_completed");
+      table.bool("project_completed").defaultTo(0);
     });
   
     await knex.schema.createTable("resources", (table) => {
@@ -16,7 +16,7 @@ exports.up = async function (knex) {
       table.increments("task_id");
       table.string("task_description", 128).notNullable();
       table.string("task_notes", 128);
-      table.bool("task_completed");
+      table.boolean("task_completed").defaultTo(false);
       table
         .integer("project_id")
         .unsigned()
