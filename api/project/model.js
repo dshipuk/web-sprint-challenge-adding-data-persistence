@@ -10,8 +10,9 @@ async function getProjects() {
   return projects;
 }
 
-async function createProject(project) {
-  
+function createProject(project) {
+  return db("projects").insert(project)
+    .then( ([project_id]) => db("projects").where("project_id", project_id).first() )
 }
 
 module.exports = {
