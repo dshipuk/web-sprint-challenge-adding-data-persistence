@@ -9,5 +9,13 @@ router.get("/", (req, res, next) => {
         .catch(next)
 })
 
+router.post("/", (req, res, next) => {
+    Resource.createResource(req.body)
+        .then( resource => {
+            res.json(resource)
+        })
+        .catch(next)
+})
+
 
 module.exports = router;

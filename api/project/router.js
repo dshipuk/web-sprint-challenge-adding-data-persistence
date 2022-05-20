@@ -12,7 +12,8 @@ router.get("/", (req, res, next) => {
 router.post("/", (req, res, next) => {
     Project.createProject(req.body)
         .then( project => {
-            res.status(201).json(project)
+            project.project_completed === 0 ? project.project_completed = false : project.project_completed = true
+            res.json(project)
         })
         .catch(next)
 })
