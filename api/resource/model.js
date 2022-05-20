@@ -5,10 +5,12 @@ async function getResources() {
 }
 
 function createResource(resource) {
-  return db("resources").insert(resource)
-    .then( ([resource_id]) => db("resources").where("resource_id", resource_id).first() )
+  return db("resources")
+    .insert(resource)
+    .then(([resource_id]) =>
+      db("resources").where("resource_id", resource_id).first()
+    );
 }
-
 
 module.exports = {
   getResources,

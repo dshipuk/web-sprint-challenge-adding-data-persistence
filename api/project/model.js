@@ -11,8 +11,11 @@ async function getProjects() {
 }
 
 function createProject(project) {
-  return db("projects").insert(project)
-    .then( ([project_id]) => db("projects").where("project_id", project_id).first() )
+  return db("projects")
+    .insert(project)
+    .then(([project_id]) =>
+      db("projects").where("project_id", project_id).first()
+    );
 }
 
 module.exports = {

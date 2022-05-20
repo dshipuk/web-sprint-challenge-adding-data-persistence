@@ -11,11 +11,13 @@ router.get("/", (req, res, next) => {
 
 router.post("/", (req, res, next) => {
   Task.createTask(req.body)
-    .then( task => {
-      task.task_completed === 0 ? task.task_completed = false : task.task_completed = true
-      res.json(task)
+    .then((task) => {
+      task.task_completed === 0
+        ? (task.task_completed = false)
+        : (task.task_completed = true);
+      res.json(task);
     })
-    .catch(next)
-})
+    .catch(next);
+});
 
 module.exports = router;
